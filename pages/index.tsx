@@ -4,7 +4,7 @@ import axios from "axios";
 export default function Home() {
     const [file, setFile] = useState();
 
-    const changeHandler = (e: React.FormEvent) => {
+    const changeHandler = (e: any) => {
         e.preventDefault();
         setFile(e.target.files[0]);
     };
