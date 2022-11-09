@@ -21,30 +21,30 @@ export default function Home() {
     console.log(response);
   };
 
-  // const handleFileReader = (event: React.FormEvent) => {
-  //   let reader = new FileReader();
-  //   reader.readAsDataURL(event.target.files[0]);
-  //   reader.onload = (e) => {
-  //     setUploadFile({
-  //       data: reader.result.split(",").pop(),
-  //       fileName: event.target.files[0].name,
-  //     });
-  //   };
-  // };
-
-  // const reqZip = async () => {
-  //   const response = await axios.post("/api/upload", uploadFile);
-  //   console.log(response.data.default_domain);
-  // };
+  const handleFileReader = (event: React.FormEvent) => {
+    let reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]);
+    reader.onload = (e) => {
+      setUploadFile({
+        data: reader.result.split(",").pop(),
+        fileName: event.target.files[0].name,
+      });
+    };
+  };
 
   const reqZip = async () => {
-    const response = await axios.post("/api/upload", file);
-    console.log(response.data.default_domain);
+    const response = await axios.post("/api/upload", uploadFile);
+    console.log(response);
   };
+
+  // const reqZip = async () => {
+  //   const response = await axios.post("/api/upload", file);
+  //   console.log(response);
+  // };
 
   return (
     <div>
-      <input type="file" name="file" onChange={changeHandler} />
+      <input type="file" name="file" onChange={handleFileReader} />
       <div>
         <button onClick={reqZip}>Submit</button>
       </div>
